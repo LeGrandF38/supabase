@@ -3,7 +3,7 @@ version: '3.8'
 services:
   # Base de données PostgreSQL
   db:
-    image: supabase/postgres:15.6.1.134
+    image: supabase/postgres:latest
     container_name: supabase-db
     healthcheck:
       test: pg_isready -U postgres -h localhost
@@ -34,7 +34,7 @@ services:
 
   # Studio - Interface d'administration
   studio:
-    image: supabase/studio:20241028-96f2c52
+    image: supabase/studio:latest
     container_name: supabase-studio
     restart: unless-stopped
     healthcheck:
@@ -61,7 +61,7 @@ services:
 
   # Meta - Gestion de la base de données
   meta:
-    image: supabase/postgres-meta:v0.83.2
+    image: supabase/postgres-meta:latest
     container_name: supabase-meta
     depends_on:
       db:
@@ -103,7 +103,7 @@ services:
 
   # Auth - Authentification (GoTrue)
   auth:
-    image: supabase/gotrue:v2.168.0
+    image: supabase/gotrue:latest
     container_name: supabase-auth
     depends_on:
       db:
@@ -145,7 +145,7 @@ services:
 
   # REST - API REST (PostgREST)
   rest:
-    image: postgrest/postgrest:v12.2.3
+    image: postgrest/postgrest:latest
     container_name: supabase-rest
     depends_on:
       db:
@@ -162,7 +162,7 @@ services:
 
   # Realtime - Subscriptions temps réel
   realtime:
-    image: supabase/realtime:v2.33.66
+    image: supabase/realtime:latest
     container_name: supabase-realtime
     depends_on:
       db:
@@ -192,7 +192,7 @@ services:
 
   # Storage - Gestion des fichiers
   storage:
-    image: supabase/storage-api:v1.11.7
+    image: supabase/storage-api:latest
     container_name: supabase-storage
     depends_on:
       db:
@@ -226,7 +226,7 @@ services:
 
   # ImgProxy - Transformation d'images
   imgproxy:
-    image: darthsim/imgproxy:v3.8.0
+    image: darthsim/imgproxy:latest
     container_name: supabase-imgproxy
     healthcheck:
       test: ["CMD", "imgproxy", "health"]
@@ -244,7 +244,7 @@ services:
 
   # Inbucket - Serveur mail pour le dev/test
   inbucket:
-    image: inbucket/inbucket:3.0.3
+    image: inbucket/inbucket:latest
     container_name: supabase-inbucket
     restart: unless-stopped
     ports:
